@@ -238,3 +238,10 @@ footer a:hover {
     nav ul { gap: 1.5rem; flex-wrap: wrap; justify-content: center; }
     .info-pratique { flex-direction: column; gap: 1rem; }
 }
+
+.logo {
+    max-width: 500px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
