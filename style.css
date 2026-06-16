@@ -1,0 +1,240 @@
+/* Variables de couleurs et polices */
+:root {
+    --bg-color: #0a0a0a;
+    --text-main: #f4f4f4;
+    --text-muted: #a0a0a0;
+    --accent-gold: #d4af37; /* Couleur laiton/or */
+    --font-title: 'Playfair Display', serif;
+    --font-text: 'Inter', sans-serif;
+}
+
+/* Reset de base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    font-family: var(--font-text);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Typographie */
+h1, h2, h3, h4 {
+    font-family: var(--font-title);
+    font-weight: 400;
+}
+
+/* Navigation */
+header {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    padding: 2rem 5%;
+    display: flex;
+    justify-content: center;
+    z-index: 10;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 3rem;
+}
+
+nav a {
+    color: var(--text-main);
+    text-decoration: none;
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: var(--accent-gold);
+}
+
+/* Section Hero (Accueil) */
+#hero {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: linear-gradient(rgba(10, 10, 10, 0.7), rgba(10, 10, 10, 0.8)), url('https://images.unsplash.com/photo-1558030006-450675393462?auto=format&fit=crop&w=1920&q=80') center/cover;
+    padding: 0 20px;
+}
+
+#hero h1 {
+    font-size: 5rem;
+    letter-spacing: 10px;
+    margin-bottom: 1rem;
+    color: var(--accent-gold);
+}
+
+#hero p {
+    font-size: 1.2rem;
+    max-width: 600px;
+    color: var(--text-muted);
+    font-style: italic;
+    font-family: var(--font-title);
+}
+
+/* Section Commune */
+section {
+    padding: 6rem 10%;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 4rem;
+    color: var(--accent-gold);
+}
+
+/* Expérience */
+#experience {
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+}
+
+.experience-text {
+    flex: 1;
+}
+
+.experience-text p {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+}
+
+.experience-img {
+    flex: 1;
+    height: 500px;
+    background: url('https://images.unsplash.com/photo-1588168333986-5b6c802421bb?auto=format&fit=crop&w=800&q=80') center/cover;
+    border-radius: 4px;
+}
+
+/* La Carte */
+.menu-category {
+    margin-bottom: 5rem;
+}
+
+.menu-category h3 {
+    font-size: 1.8rem;
+    border-bottom: 1px solid #333;
+    padding-bottom: 1rem;
+    margin-bottom: 2rem;
+    color: var(--text-main);
+}
+
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 3rem;
+}
+
+.menu-item {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.menu-img {
+    width: 100%;
+    height: 250px;
+    background-color: #1a1a1a;
+    border-radius: 4px;
+    object-fit: cover;
+}
+
+.menu-item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.menu-item h4 {
+    font-size: 1.2rem;
+    color: var(--accent-gold);
+}
+
+.menu-item p {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+}
+
+/* Réservation */
+#reservation {
+    text-align: center;
+    background-color: #111;
+    padding: 8rem 10%;
+}
+
+#reservation p {
+    max-width: 600px;
+    margin: 0 auto 3rem auto;
+    color: var(--text-muted);
+}
+
+.btn-reserve {
+    display: inline-block;
+    padding: 1rem 3rem;
+    border: 1px solid var(--accent-gold);
+    color: var(--accent-gold);
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.btn-reserve:hover {
+    background-color: var(--accent-gold);
+    color: var(--bg-color);
+}
+
+.info-pratique {
+    margin-top: 4rem;
+    display: flex;
+    justify-content: center;
+    gap: 4rem;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 2rem;
+    border-top: 1px solid #222;
+    color: #555;
+    font-size: 0.8rem;
+}
+
+footer a {
+    color: #555;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+footer a:hover {
+    color: var(--text-main);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    #experience {
+        flex-direction: column;
+    }
+    #hero h1 { font-size: 3.5rem; }
+    nav ul { gap: 1.5rem; flex-wrap: wrap; justify-content: center; }
+    .info-pratique { flex-direction: column; gap: 1rem; }
+}
