@@ -1,78 +1,118 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Morimoto | Barbecue Coréen Gastronomique</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Morimoto | Barbecue Coréen</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="style.css" />
+        <link rel="icon" href="favicon.png" type="image/x-icon" />
+    </head>
+    <body>
+        <header>
+            <nav>
+                <ul>
+                    <li><a href="index.html" class="active">Accueil</a></li>
+                    <li><a href="experience.html">L'Expérience</a></li>
+                    <li><a href="carte.html">La Carte</a></li>
+                    <li><a href="reservation.html">Réserver</a></li>
+                </ul>
+            </nav>
+        </header>
 
-    <header>
-        <nav>
-            <ul>
-                <li><a href="index.html" class="active">Accueil</a></li>
-                <li><a href="experience.html">L'Expérience</a></li>
-                <li><a href="carte.html">La Carte</a></li>
-                <li><a href="reservation.html">Réserver</a></li>
-            </ul>
-        </nav>
-    </header>
+        <section id="hero">
+            <h1><img src="Logo.png" alt="Morimoto" class="logo" /></h1>
+            <p>
+                Une célébration des viandes d'exception, sublimées par le feu et
+                les traditions séculaires de la cour royale coréenne.
+            </p>
+        </section>
 
-    <section id="hero">
-        <h1><img src="logo.png" alt="Morimoto" class="logo"></h1>
-        <p>Une célébration des viandes d'exception, sublimées par le feu et les traditions séculaires de la cour royale coréenne.</p>
-    </section>
-
-    <section id="experience">
-        <div class="experience-text">
-            <h2 class="section-title" style="text-align: left;">L'Art du Feu</h2>
-            <p>Loin de l'effervescence des barbecues traditionnels, Morimoto redéfinit l'expérience culinaire coréenne. Un rituel silencieux et exquis, orchestré directement à votre table par nos chefs.</p>
-            <a href="experience.html" class="btn-reserve" style="padding: 0.6rem 2rem; font-size: 0.8rem;">Découvrir notre philosophie</a>
-        </div>
-        <div class="experience-img"></div>
-    </section>
-
-    <section id="menu" style="text-align: center; background-color: #0f0f0f;">
-        <h2 class="section-title">La Carte</h2>
-        <p style="color: var(--text-muted); max-width: 600px; margin: 0 auto 3rem auto; font-family: var(--font-title); font-style: italic;">
-            Wagyu A5, Hanwoo, Caviar Baeri et truffe fraîche. Découvrez des alliances nobles et des pièces de viandes rares saisies au charbon Binchotan.
-        </p>
-        <a href="carte.html" class="btn-reserve">Explorer le menu complet</a>
-    </section>
-
-    <section id="reservation">
-        <h2 class="section-title" style="margin-bottom: 2rem;">Votre Table Vous Attend</h2>
-        <a href="reservation.html" class="btn-reserve">Réserver une table</a>
-
-        <div class="info-pratique">
-            <div>
-                <strong>Adresse</strong><br>
-                15 Avenue Montaigne, 75008 Paris
+        <section id="experience">
+            <div class="experience-text">
+                <h2 class="section-title" style="text-align: left">
+                    L'Art du Feu
+                </h2>
+                <p>
+                    Loin de l'effervescence des barbecues traditionnels,
+                    Morimoto redéfinit l'expérience culinaire coréenne. Un
+                    rituel silencieux et exquis, orchestré directement à votre
+                    table par nos chefs.
+                </p>
+                <a
+                    href="experience.html"
+                    class="btn-reserve"
+                    style="padding: 0.6rem 2rem; font-size: 0.8rem"
+                    >Découvrir notre philosophie</a
+                >
             </div>
-            <div>
-                <strong>Horaires</strong><br>
-                Mar - Sam | 19h00 - 23h00
-            </div>
-            <div>
-                <strong>Contact</strong><br>
-                contact@morimoto-restaurant.com<br>
-                +33 1 23 45 67 89
-            </div>
-        </div>
-    </section>
+            <div
+                class="experience-img"
+                style="background-image: url(&quot;./charbon.jpg&quot;)"
+            ></div>
+        </section>
 
-    <footer>
-        <p>© 2026 Morimoto - Barbecue Coréen Gastronomique</p>
-        <div style="margin-top: 10px;">
-            <a href="#">Mentions légales</a> | 
-            <a href="#">Politique de confidentialité</a> | 
-            <a href="#">Instagram</a>
-        </div>
-    </footer>
+        <section id="menu" style="text-align: center">
+            <div
+                class="menu-bg"
+                style="background-image: url(&quot;galbi.png&quot;)"
+            ></div>
+            <h2 class="section-title">La Carte</h2>
+            <p
+                style="
+                    color: var(--text-muted);
+                    max-width: 600px;
+                    margin: 0 auto 3rem auto;
+                    font-family: var(--font-title);
+                    font-style: italic;
+                "
+            >
+                Wagyu A5, Hanwoo, Caviar Baeri et truffe fraîche. Découvrez des
+                alliances nobles et des pièces de viandes rares saisies au
+                charbon Binchotan.
+            </p>
+            <a href="carte.html" class="btn-reserve"
+                >Explorer le menu complet</a
+            >
+        </section>
 
-</body>
+        <section id="reservation">
+            <h2 class="section-title" style="margin-bottom: 2rem">
+                Votre Table Vous Attend
+            </h2>
+            <a href="reservation.html" class="btn-reserve"
+                >Réserver une table</a
+            >
+
+            <div class="info-pratique">
+                <div>
+                    <strong>Adresse</strong><br />
+                    15 Avenue Montaigne, 75008 Paris
+                </div>
+                <div>
+                    <strong>Horaires</strong><br />
+                    Mar - Sam | 19h00 - 23h00
+                </div>
+                <div>
+                    <strong>Contact</strong><br />
+                    contact@morimoto-restaurant.com<br />
+                    +33 1 23 45 67 89
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>© 2026 Morimoto - Barbecue Coréen Gastronomique</p>
+            <div style="margin-top: 10px">
+                <a href="#">Mentions légales</a> |
+                <a href="#">Politique de confidentialité</a> |
+                <a href="#">Instagram</a>
+            </div>
+        </footer>
+    </body>
 </html>
