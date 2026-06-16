@@ -245,3 +245,9 @@ footer a:hover {
     display: block;
     margin: 0 auto;
 }
+/* Style pour l'onglet de la page actuelle */
+nav a.active {
+    color: var(--accent-gold);
+    border-bottom: 1px solid var(--accent-gold);
+    padding-bottom: 4px;
+}
