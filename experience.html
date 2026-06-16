@@ -8,20 +8,357 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* ─── Variables locales (complètent style.css) ── */
+        :root {
+            --bg-card:   #111111;
+            --ember:     #8b1a1a;
+            --divider:   #1e1e1e;
+        }
+
+        /* ─── Navigation ─────────────────────────────── */
+        header {
+            position: fixed;
+            top: 0; left: 0; width: 100%;
+            padding: 1.6rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            background: rgba(10,10,10,0.82);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--divider);
+        }
+        .logo {
+            font-family: var(--font-title);
+            font-size: 1.4rem;
+            letter-spacing: 6px;
+            color: var(--accent-gold);
+            text-decoration: none;
+        }
+        nav ul { list-style: none; display: flex; gap: 2.5rem; }
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.78rem;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            transition: color 0.3s;
+        }
+        nav a:hover, nav a.active { color: var(--accent-gold); }
+
+        /* ─── HERO ───────────────────────────────────── */
+        #hero {
+            position: relative;
+            height: 100vh;
+            min-height: 600px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 0 10% 8rem;
+            overflow: hidden;
+        }
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background: url('https://images.unsplash.com/photo-1544025162-811114212308?auto=format&fit=crop&w=1920&q=80') center / cover no-repeat;
+            transform: scale(1.05);
+            transition: transform 12s ease-out;
+        }
+        .hero-bg.loaded { transform: scale(1); }
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(10,10,10,1) 0%, rgba(10,10,10,0.6) 50%, rgba(10,10,10,0.1) 100%);
+        }
+        .hero-content { position: relative; z-index: 2; max-width: 680px; }
+        .hero-eyebrow {
+            display: inline-block;
+            font-size: 0.72rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--accent-gold);
+            margin-bottom: 1.5rem;
+        }
+        #hero h1 {
+            font-family: var(--font-title);
+            font-size: clamp(2.8rem, 6vw, 5.5rem);
+            font-weight: 400;
+            line-height: 1.1;
+            color: var(--text-main);
+            margin-bottom: 1.6rem;
+            letter-spacing: normal;
+        }
+        #hero h1 em { font-style: italic; color: var(--accent-gold); }
+        #hero p { font-size: 1.05rem; color: var(--text-muted); max-width: 500px; font-family: var(--font-title); font-style: italic; }
+
+        /* ─── Braise séparateur (SIGNATURE) ─────────── */
+        .ember-line {
+            width: 100%;
+            height: 1px;
+            position: relative;
+            overflow: hidden;
+        }
+        .ember-line::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, transparent 0%, var(--ember) 30%, var(--accent-gold) 50%, var(--ember) 70%, transparent 100%);
+            animation: braise 4s ease-in-out infinite;
+        }
+        @keyframes braise {
+            0%   { opacity: 0.3; }
+            50%  { opacity: 1; }
+            100% { opacity: 0.3; }
+        }
+
+        /* ─── Surcharges section commune ─────────────── */
+        .section-label {
+            font-size: 0.7rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--ember);
+            margin-bottom: 1rem;
+            font-family: var(--font-text);
+        }
+        .section-title {
+            font-family: var(--font-title);
+            font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+            font-weight: 400;
+            color: var(--text-main);
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
+        .section-title em { color: var(--accent-gold); font-style: italic; }
+
+        /* ─── ACTE 1 : L'Arrivée ─────────────────────── */
+        .act-arrival {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
+            align-items: center;
+            padding: 7rem 10%;
+        }
+        .arrival-img-wrapper { position: relative; height: 560px; }
+        .arrival-img-wrapper img { width: 100%; height: 100%; object-fit: cover; border-radius: 2px; display: block; }
+        .arrival-img-wrapper::after {
+            content: '';
+            position: absolute;
+            top: 1.5rem; left: 1.5rem; right: -1.5rem; bottom: -1.5rem;
+            border: 1px solid rgba(212,175,55,0.25);
+            border-radius: 2px;
+            pointer-events: none;
+            z-index: -1;
+        }
+        .detail-list { list-style: none; margin-top: 2.5rem; display: flex; flex-direction: column; gap: 0.8rem; }
+        .detail-list li { display: flex; align-items: center; gap: 1rem; font-size: 0.88rem; color: var(--text-muted); }
+        .detail-list li::before { content: ''; display: block; width: 24px; height: 1px; background: var(--accent-gold); flex-shrink: 0; }
+
+        /* ─── ACTE 2 : Le Binchotan ──────────────────── */
+        .act-fire { background: var(--bg-card); padding: 7rem 10%; }
+        .fire-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center; }
+        .fire-visual { order: -1; }
+        .fire-img-pair { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 320px 200px; gap: 1rem; }
+        .fire-img-pair img { width: 100%; height: 100%; object-fit: cover; border-radius: 2px; display: block; }
+        .fire-img-pair img:first-child { grid-column: 1 / 3; }
+        .fire-stat { display: flex; flex-direction: column; gap: 2.5rem; margin-top: 2.5rem; }
+        .stat-number { font-family: var(--font-title); font-size: 2.8rem; font-weight: 600; color: var(--accent-gold); line-height: 1; }
+        .stat-label { font-size: 0.78rem; letter-spacing: 2px; text-transform: uppercase; color: var(--text-muted); margin-top: 0.4rem; }
+
+        /* ─── ACTE 3 : La Viande ─────────────────────── */
+        .act-meat { padding: 7rem 10%; }
+        .meat-intro { text-align: center; max-width: 680px; margin: 0 auto 5rem; }
+        .cuts-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+        .cut-card { position: relative; overflow: hidden; cursor: default; }
+        .cut-card img { width: 100%; height: 420px; object-fit: cover; display: block; transition: transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94); filter: brightness(0.75); }
+        .cut-card:hover img { transform: scale(1.06); filter: brightness(0.55); }
+        .cut-overlay {
+            position: absolute; inset: 0;
+            display: flex; flex-direction: column; justify-content: flex-end;
+            padding: 2rem 1.8rem;
+            background: linear-gradient(to top, rgba(10,10,10,0.9) 0%, transparent 55%);
+        }
+        .cut-origin { font-size: 0.68rem; letter-spacing: 3px; text-transform: uppercase; color: var(--ember); margin-bottom: 0.4rem; }
+        .cut-name { font-family: var(--font-title); font-size: 1.4rem; color: var(--text-main); margin-bottom: 0.6rem; }
+        .cut-desc {
+            font-size: 0.85rem; color: var(--text-muted); line-height: 1.6;
+            max-height: 0; overflow: hidden;
+            transition: max-height 0.5s ease, opacity 0.5s ease;
+            opacity: 0;
+        }
+        .cut-card:hover .cut-desc { max-height: 100px; opacity: 1; }
+
+        /* ─── ACTE 4 : Le Service ─────────────────────── */
+        .act-service { background: var(--bg-card); padding: 7rem 10%; }
+        .service-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: start; }
+        .rituals { display: flex; flex-direction: column; gap: 3rem; margin-top: 2.5rem; }
+        .ritual-item { display: grid; grid-template-columns: 48px 1fr; gap: 1.5rem; align-items: start; }
+        .ritual-icon {
+            width: 48px; height: 48px;
+            border: 1px solid rgba(212,175,55,0.3);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.2rem; flex-shrink: 0; border-radius: 1px;
+        }
+        .ritual-title { font-family: var(--font-title); font-size: 1.1rem; color: var(--text-main); margin-bottom: 0.4rem; }
+        .ritual-body { font-size: 0.88rem; color: var(--text-muted); line-height: 1.7; }
+        .service-visual { position: sticky; top: 100px; }
+        .service-img-stack { position: relative; height: 600px; }
+        .service-img-stack img:first-child { display: block; width: 75%; height: 420px; object-fit: cover; border-radius: 2px; }
+        .service-img-stack img:last-child {
+            display: block; position: absolute; width: 55%; height: 260px;
+            object-fit: cover; right: 0; bottom: 0;
+            border-radius: 2px; border: 4px solid var(--bg-card);
+        }
+
+        /* ─── CTA Final ───────────────────────────────── */
+        .act-cta { text-align: center; padding: 9rem 10%; position: relative; overflow: hidden; }
+        .act-cta::before {
+            content: 'SURA';
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            font-family: var(--font-title);
+            font-size: clamp(8rem, 20vw, 18rem);
+            letter-spacing: 0.15em;
+            color: rgba(212,175,55,0.035);
+            white-space: nowrap; pointer-events: none; user-select: none;
+        }
+        .cta-quote {
+            font-family: var(--font-title); font-style: italic;
+            font-size: clamp(1.3rem, 2.5vw, 2rem);
+            color: var(--text-muted); max-width: 700px;
+            margin: 0 auto 3rem; line-height: 1.5;
+        }
+        .cta-quote strong { color: var(--accent-gold); font-style: normal; }
+
+        /* ─── Scroll reveal ───────────────────────────── */
+        .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94), transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94); }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+        .reveal-delay-1 { transition-delay: 0.15s; }
+        .reveal-delay-2 { transition-delay: 0.3s; }
+
+        /* ─── Responsive ──────────────────────────────── */
+        @media (max-width: 900px) {
+            .act-arrival, .fire-grid, .service-grid { grid-template-columns: 1fr; gap: 3rem; }
+            .fire-visual { order: 0; }
+            .service-visual { position: static; }
+            .cuts-grid { grid-template-columns: 1fr; }
+            .cut-card img { height: 300px; }
+            nav ul { gap: 1.2rem; flex-wrap: wrap; justify-content: center; }
+            #hero { padding: 0 6% 6rem; }
+            .act-arrival, .act-meat { padding: 5rem 6%; }
+            .act-fire, .act-service { padding: 5rem 6%; }
+            .act-cta { padding: 6rem 6%; }
+            .fire-img-pair { grid-template-rows: 220px 140px; }
+            .arrival-img-wrapper { height: 380px; }
+            .service-img-stack { height: 380px; }
+            .service-img-stack img:first-child { height: 280px; }
+            .service-img-stack img:last-child { height: 180px; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .ember-line::before { animation: none; opacity: 0.5; }
+            .reveal { opacity: 1; transform: none; }
+            .hero-bg { transition: none; }
+        }
+    </style>
 </head>
 <body>
 
-    <section id="hero" style="height: 60vh; background: linear-gradient(rgba(10, 10, 10, 0.8), rgba(10, 10, 10, 0.9)), url('https://images.unsplash.com/photo-1588168333986-5b6c802421bb?auto=format&fit=crop&w=1920&q=80') center/cover;">
-        <h1>L'Art du Feu</h1>
-        <p>Une immersion au cœur du rituel culinaire de la cour royale coréenne.</p>
+    <!-- ─── HEADER ─── -->
+    <header>
+        <a href="index.html" class="logo">SURA</a>
+        <nav>
+            <ul>
+                <li><a href="index.html#hero">Accueil</a></li>
+                <li><a href="#" class="active">L'Expérience</a></li>
+                <li><a href="index.html#menu">La Carte</a></li>
+                <li><a href="index.html#reservation">Réserver</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- ─── HERO ─── -->
+    <section id="hero">
+        <div class="hero-bg" id="heroBg"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <span class="hero-eyebrow">L'Expérience SURA</span>
+            <h1>Là où le feu<br>devient <em>rituel</em>.</h1>
+            <p>Du choix de la braise à la découpe à table, chaque geste obéit à une précision héritée des cuisines de la cour royale de Joseon.</p>
+        </div>
     </section>
 
-    <section>
-        <h2 class="section-title">Le Charbon Binchotan</h2>
-        <p style="text-align: center; max-width: 800px; margin: 0 auto; color: var(--text-muted);">
-            Notre secret réside dans l'utilisation du Binchotan, un charbon de bois traditionnel japonais d'une pureté absolue. Il brûle à une température extrême sans fumée ni odeur, saisissant instantanément les viandes pour en capturer les sucs et leur conférer un parfum subtil inimitable.
-        </p>
+    <div class="ember-line"></div>
+
+    <!-- ─── ACTE 1 : L'ARRIVÉE ─── -->
+    <section class="act-arrival">
+        <div class="reveal">
+            <p class="section-label">Premier acte</p>
+            <h2 class="section-title">L'accueil comme<br>premier <em>accord</em>.</h2>
+            <p style="color: var(--text-muted); font-size: 1rem; max-width: 580px; line-height: 1.9;">Dès votre arrivée, une odeur imperceptible de charbon tiède vous précède dans la salle — le Binchotan est déjà en veille, à la température exacte qu'il faut. Votre table vous appartient pour la soirée. Rien n'est précipité.</p>
+            <p style="color: var(--text-muted); font-size: 1rem; max-width: 580px; line-height: 1.9; margin-top: 1.2rem;">Un chef de rang vous présente la séquence du soir et les pièces du moment, comme un sommelier déroule une carte de vins exceptionnels. SURA commence avant le premier plat.</p>
+            <ul class="detail-list">
+                <li>Accueil personnalisé par le maître de salle</li>
+                <li>Mise en place du charbon Binchotan devant vous</li>
+                <li>Sélection des viandes présentée sur plateau de pierre</li>
+                <li>Accord mets & sakés ou vins naturels proposé à la carte</li>
+            </ul>
+        </div>
+        <div class="reveal reveal-delay-1">
+            <div class="arrival-img-wrapper">
+                <img src="https://images.unsplash.com/photo-1558030006-450675393462?auto=format&fit=crop&w=900&q=80" alt="Salle SURA">
+            </div>
+        </div>
     </section>
 
-    </body>
-</html>
+    <div class="ember-line"></div>
+
+    <!-- ─── ACTE 2 : LE BINCHOTAN ─── -->
+    <section class="act-fire">
+        <div class="fire-grid">
+            <div class="fire-visual reveal">
+                <div class="fire-img-pair">
+                    <img src="https://images.unsplash.com/photo-1615937657715-bc7b4b7962c1?auto=format&fit=crop&w=900&q=80" alt="Charbon Binchotan">
+                    <img src="https://images.unsplash.com/photo-1544025162-811114212308?auto=format&fit=crop&w=500&q=80" alt="Grill">
+                    <img src="https://images.unsplash.com/photo-1583224964978-225ddb3eaec7?auto=format&fit=crop&w=500&q=80" alt="Banchan">
+                </div>
+            </div>
+            <div class="reveal reveal-delay-1">
+                <p class="section-label">Deuxième acte</p>
+                <h2 class="section-title">Le charbon<br>blanc de <em>Kishu</em>.</h2>
+                <p style="color: var(--text-muted); font-size: 1rem; max-width: 580px; line-height: 1.9;">Produit à partir de chêne Ubame carbonisé à 1 200°C, le Binchotan est le seul charbon que SURA utilise. Il brûle sans flamme, sans fumée, sans odeur — uniquement une chaleur rayonnante d'une pureté absolue, à 800°C constants.</p>
+                <p style="color: var(--text-muted); font-size: 1rem; max-width: 580px; line-height: 1.9; margin-top: 1.2rem;">La viande ne rencontre jamais la flamme. Elle se caramélise dans une lenteur calculée, conservant tous ses sucs. C'est la différence entre cuire et révéler.</p>
+                <div class="fire-stat">
+                    <div><div class="stat-number">800°</div><div class="stat-label">Température de rayonnement constante</div></div>
+                    <div><div class="stat-number">0</div><div class="stat-label">Flamme, fumée, odeur parasite</div></div>
+                    <div><div class="stat-number">3–4h</div><div class="stat-label">Durée de combustion par chargement</div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="ember-line"></div>
+
+    <!-- ─── ACTE 3 : LA VIANDE ─── -->
+    <section class="act-meat">
+        <div class="meat-intro reveal">
+            <p class="section-label">Troisième acte</p>
+            <h2 class="section-title" style="text-align:center;">Des pièces<br>sans <em>concession</em>.</h2>
+            <p style="text-align:center; margin: 0 auto; color: var(--text-muted); font-size: 1rem; line-height: 1.9;">Chaque viande est sourcée directement : Wagyu Grade A5 du Kagoshima, Hanwoo coréen certifié 1+ et bœuf maturé à sec 45 jours. Survolez les pièces pour en découvrir l'origine.</p>
+        </div>
+        <div class="cuts-grid reveal">
+            <div class="cut-card">
+                <img src="https://images.unsplash.com/photo-1615937657715-bc7b4b7962c1?auto=format&fit=crop&w=700&q=80" alt="Wagyu A5">
+                <div class="cut-overlay">
+                    <p class="cut-origin">Kagoshima, Japon</p>
+                    <h3 class="cut-name">Wagyu Grade A5</h3>
+                    <p class="cut-desc">Persillage BMS 10–12. La graisse intramusculaire fond à 25°C, avant même le grill. Quelques secondes sur la braise suffisent.</p>
+                </div>
+            </div>
+            <div class="cut-card">
+                <img src="https://images.unsplash.com/photo-1544025162-811114212308?auto=format&fit=crop&w=700&q=80" alt="Galbi Hanwoo">
+                <div class="cut-overlay">
+                    <p class="cut-origin">Gyeongbuk, Corée du Sud</p>
+                    <h3 class="cut-name">Galbi de Hanwoo 1+</h3>
+                    <p class="cut-desc">Travers désossé, mariné 48h dans une réduction de soja vieilli, mirin artisanal et copeaux de truffe
