@@ -9,24 +9,80 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
-<header>
-    <nav>
-        <ul>
-            <li><a href="index.html">Accueil</a></li>
-            <li><a href="experience.html">L'Expérience</a></li>
-            <li><a href="carte.html">La Carte</a></li>
-            <li><a href="reservation.html" class="active">Réserver</a></li>
-        </ul>
-    </nav>
-</header>
 <body>
 
-    <section id="reservation" style="min-height: 100vh;">
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="experience.html">L'Expérience</a></li>
+                <li><a href="carte.html">La Carte</a></li>
+                <li><a href="reservation.html" class="active">Réserver</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- SECTION RÉSERVATION ENRICHIE -->
+    <section id="reservation" style="min-height: 100vh; padding-top: 8rem;">
         <h2 class="section-title">Votre Table Vous Attend</h2>
-        <p>SURA vous accueille uniquement sur réservation. Veuillez remplir les détails ci-dessous pour initier votre rituel.</p>
+        <p class="reservation-subtitle">SURA vous accueille uniquement sur réservation. Veuillez remplir les détails ci-dessous pour initier votre rituel culinaire.</p>
         
-        <a href="#" class="btn-reserve">Lancer la demande</a>
+        <!-- LE FORMULAIRE DE PRESTIGE -->
+        <form id="booking-form" class="reservation-form">
+            <div class="form-group">
+                <label for="fullname">Nom complet</label>
+                <input type="text" id="fullname" placeholder="M. ou Mme..." required>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="guests">Nombre de convives</label>
+                    <select id="guests" required>
+                        <option value="" disabled selected>Sélectionnez...</option>
+                        <option value="1">1 Personne</option>
+                        <option value="2">2 Personnes</option>
+                        <option value="3">3 Personnes</option>
+                        <option value="4">4 Personnes (Max)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="date">Date</label>
+                    <input type="date" id="date" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="time">Service</label>
+                <select id="time" required>
+                    <option value="" disabled selected>Choisir une heure...</option>
+                    <option value="19:00">19h00 (Premier service)</option>
+                    <option value="19:30">19h30</option>
+                    <option value="21:00">21h00 (Second service)</option>
+                    <option value="21:30">21h30</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="notes">Demandes particulières (Allergies, restrictions)</label>
+                <textarea id="notes" rows="3" placeholder="Ex: Allergie aux crustacés, préférence pour une table près du grill central..."></textarea>
+            </div>
+
+            <button type="submit" class="btn-reserve" style="width: 100%; cursor: pointer; margin-top: 1rem;">
+                Demander une réservation
+            </button>
+        </form>
+
+        <!-- Message de succès caché par défaut -->
+        <div id="success-message" class="success-box" style="display: none;">
+            <h3>✨ Demande Enregistrée</h3>
+            <p id="success-text"></p>
+        </div>
     </section>
+
+    <footer>
+        <p>© 2026 SURA - Barbecue Coréen Gastronomique</p>
+    </footer>
 
     <script src="script.js"></script>
 </body>
