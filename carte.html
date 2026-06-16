@@ -1,15 +1,5 @@
 <!DOCTYPE html>
 <html lang="fr">
-    <header>
-    <nav>
-        <ul>
-            <li><a href="index.html">Accueil</a></li>
-            <li><a href="experience.html">L'Expérience</a></li>
-            <li><a href="carte.html" class="active">La Carte</a></li>
-            <li><a href="reservation.html">Réserver</a></li>
-        </ul>
-    </nav>
-</header>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,12 +11,134 @@
 </head>
 <body>
 
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="experience.html">L'Expérience</a></li>
+                <li><a href="carte.html" class="active">La Carte</a></li>
+                <li><a href="reservation.html">Réserver</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- BANNIÈRE DE LA CARTE -->
     <section id="hero" style="height: 40vh; background: linear-gradient(rgba(10, 10, 10, 0.8), rgba(10, 10, 10, 0.9)), url('https://images.unsplash.com/photo-1615937657715-bc7b4b7962c1?auto=format&fit=crop&w=1920&q=80') center/cover;">
         <h1>La Carte</h1>
+        <p style="font-family: var(--font-title); color: var(--accent-gold); font-style: italic; font-size: 1.2rem;">Une symphonie de saveurs impériales et de découpes d'exception.</p>
     </section>
 
+    <!-- LE MENU INTERACTIF -->
     <section id="menu">
-        </section>
+        
+        <!-- CATÉGORIE 1 : PRÉLUDES -->
+        <div class="menu-category">
+            <h3>🥢 Préludes</h3>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <img src="https://images.unsplash.com/photo-1582169505937-b9992bd01ed9?auto=format&fit=crop&w=600&q=80" alt="Yukhoe" class="menu-img">
+                    <div class="menu-item-header">
+                        <h4>Yukhoe de Wagyu</h4>
+                        <span class="menu-price">38 €</span>
+                    </div>
+                    <p>Tartare de bœuf Wagyu, poire coréenne Nashi, huile de sésame torréfié et dôme de caviar Baeri.</p>
+                </div>
+                <div class="menu-item">
+                    <img src="https://images.unsplash.com/photo-1626844131082-256783844137?auto=format&fit=crop&w=600&q=80" alt="Pajeon" class="menu-img">
+                    <div class="menu-item-header">
+                        <h4>Pajeon aux Fruits de Mer Nobles</h4>
+                        <span class="menu-price">34 €</span>
+                    </div>
+                    <p>Crêpe croustille-moelleuse à la ciboule coréenne, noix de Saint-Jacques, homard bleu et sauce soja vieillie.</p>
+                </div>
+            </div>
+        </div>
 
-    </body>
+        <!-- CATÉGORIE 2 : LE RITUEL DU FEU -->
+        <div class="menu-category">
+            <h3>🔥 Le Rituel du Feu (Grillade sur Binchotan)</h3>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <img src="https://images.unsplash.com/photo-1615937657715-bc7b4b7962c1?auto=format&fit=crop&w=600&q=80" alt="Wagyu A5" class="menu-img">
+                    <div class="menu-item-header">
+                        <h4>Faux-filet Wagyu Grade A5</h4>
+                        <span class="menu-price">120 €</span>
+                    </div>
+                    <p>La quintessence du persillage en provenance directe de Kagoshima. Une texture fondante qui s'évanouit au contact du palais.</p>
+                </div>
+                <div class="menu-item">
+                    <img src="https://images.unsplash.com/photo-1544025162-811114212308?auto=format&fit=crop&w=600&q=80" alt="Galbi" class="menu-img">
+                    <div class="menu-item-header">
+                        <h4>Galbi Mariné à la Truffe</h4>
+                        <span class="menu-price">75 €</span>
+                    </div>
+                    <p>Travers de bœuf de race normande désossé, mariné 48h dans notre sauce soja secrète et surmonté de copeaux de truffe fraîche.</p>
+                </div>
+                <div class="menu-item">
+                    <img src="https://images.unsplash.com/photo-1628268909376-e8c4dfbbd8dc?auto=format&fit=crop&w=600&q=80" alt="Porc Iberique" class="menu-img">
+                    <div class="menu-item-header">
+                        <h4>Poitrine Ibérique Bellota</h4>
+                        <span class="menu-price">58 €</span>
+                    </div>
+                    <p>Découpée en fines lamelles devant vous, accompagnée de sel rose de l'Himalaya et de notre pâte Ssamjang maison.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- CATÉGORIE 3 : ACCOMPAGNEMENTS & DESSERTS -->
+        <div class="menu-category">
+            <h3>🥗 Banchan & 🌸 Douceurs</h3>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <img src="https://images.unsplash.com/photo-1583224964978-225ddb3eaec7?auto=format&fit=crop&w=600&q=80" alt="Kimchi" class="menu-img">
+                    <div class="menu-item-header">
+                        <h4>Trilogie de Kimchi Artisanal</h4>
+                        <span class="menu-price">18 €</span>
+                    </div>
+                    <p>Kimchi de chou affiné 6 mois en jarre Onggi, Kimchi blanc rafraîchissant au yuzu, et radis blanc croquant.</p>
+                </div>
+                <div class="menu-item">
+                    <img src="https://images.unsplash.com/photo-1551024601-bec78aea704b?auto=format&fit=crop&w=600&q=80" alt="Dessert" class="menu-img">
+                    <div class="menu-item-header">
+                        <h4>Nuage de Sésame Noir</h4>
+                        <span class="menu-price">22 €</span>
+                    </div>
+                    <p>Mousse légère au sésame noir torréfié, cœur coulant au praliné et tuile croustillante au miel de l'île de Jeju.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- NOUPHÉ COULISSE : BOISSONS ET ÉLIXIRS -->
+        <div class="menu-category">
+            <h3>🍶 Élixirs & Nectars</h3>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <div class="menu-item-header">
+                        <h4>Hwayo Premium Soju (25°)</h4>
+                        <span class="menu-price">19 € <small>/ verre</small></span>
+                    </div>
+                    <p>Soju de prestige distillé à base de riz pur, vieilli en poterie traditionnelle pour une rondeur absolue en bouche.</p>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-header">
+                        <h4>Thé au Ginseng Rouge de Geumsan</h4>
+                        <span class="menu-price">14 €</span>
+                    </div>
+                    <p>Une infusion rare et énergisante, sélectionnée pour ses notes terreuses qui se marient parfaitement avec le bœuf maturé.</p>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <footer>
+        <p>© 2026 SURA - Barbecue Coréen Gastronomique</p>
+        <div style="margin-top: 10px;">
+            <a href="#">Mentions légales</a> | 
+            <a href="#">Politique de confidentialité</a> | 
+            <a href="#">Instagram</a>
+        </div>
+    </footer>
+
+</body>
 </html>
